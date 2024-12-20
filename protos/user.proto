@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package user;
+
+service UserService {
+  // Unary call
+  rpc GetUser (UserRequest) returns (UserResponse) {}
+  
+  // Server streaming
+  rpc GetUsers (UsersRequest) returns (stream UserResponse) {}
+}
+
+message UserRequest {
+  int32 id = 1;
+}
+
+message UsersRequest {
+  int32 limit = 1;
+}
+
+message UserResponse {
+  int32 id = 1;
+  string name = 2;
+  string email = 3;
+} 
